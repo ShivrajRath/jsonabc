@@ -6,5 +6,7 @@ Sorts JSON object alphabetically. It supports nested objects and arrays as well
 
 IE9+, Evergreen browsers
 
+Offline support
 
-[JSON ABC](http://novicelab.org/tools/jsonabc "JSON ABC")
+
+[JSON ABC](http://novicelab.org/jsonabc "JSON ABC")

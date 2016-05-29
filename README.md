@@ -1,6 +1,6 @@
 ### JSON ABC
 
-Sorts JSON object alphabetically. It supports nested objects and arrays as well
+orts JSON object alphabetically. It supports nested objects, arrays and collections. Works offline and beautifies JSON object too.
 
 #### Supports
 

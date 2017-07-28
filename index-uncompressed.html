@@ -20,9 +20,8 @@
             margin: 0;
             border: 0;
             padding: 0;
-            line-height: 125%;
             vertical-align: baseline;
-            font-family: 'Palatino', sans-serif;
+            font-family: 'Palatino', 'Calibri', sans-serif;
         }
 
         html,
@@ -52,8 +51,8 @@
             cursor: pointer;
         }
 
-        span > *{
-          display: inline-block;
+        span>* {
+            display: inline-block;
         }
 
         .ad {
@@ -102,24 +101,27 @@
             padding-top: 2%;
         }
 
-        @media only screen and (max-width : 768px) {
-          .ad{
-            display: none;
-            .m .t{
-              font-size: 0.5em;
-            }
-          }
+        .mb10 {
+            margin-bottom: 10px;
         }
 
-        @media only screen and (max-width : 420px) {
-          .ad{
-            display: none;
-            .m .t{
-              font-size: 0.3em;
+        @media only screen and (max-width: 768px) {
+            .ad {
+                display: none;
+                .m .t {
+                    font-size: 0.5em;
+                }
             }
-          }
         }
 
+        @media only screen and (max-width: 420px) {
+            .ad {
+                display: none;
+                .m .t {
+                    font-size: 0.3em;
+                }
+            }
+        }
     </style>
 </head>
 
@@ -139,14 +141,19 @@
             </script>
         </div>
     </div>
+    <div class="o mb10">
+        <span>Options: &nbsp;&nbsp;</span>
+        <input type="checkbox" id="noarray" name="noarray" value="true">
+        <label for="noarray">Spare plain Arrays</label>
+    </div>
     <div class="m">
         <textarea id="t" class="t" name="jsonabc" placeholder="Paste your unsorted JSON here" spellcheck="false"></textarea>
         <input type="button" class="f" value="SORT ABC" onclick="sort()">
         <p>
             <h3 class="c">
-              <a href="http://twitter.com/shivrajrath" target="_blank">Twitter</a>&nbsp;&nbsp;&nbsp;
-              <a href="http://github.com/shivrajrath" target="_blank">Github</a>&nbsp;&nbsp;&nbsp;
-              <a href="http://novicelab.org" target="_blank">Blog</a>
+                <a href="http://twitter.com/shivrajrath" target="_blank">Twitter</a>&nbsp;&nbsp;&nbsp;
+                <a href="http://github.com/shivrajrath" target="_blank">Github</a>&nbsp;&nbsp;&nbsp;
+                <a href="http://novicelab.org" target="_blank">Blog</a>
             </h3>
         </p>
     </div>
@@ -166,13 +173,23 @@
             var or = {};
 
             if (isArray(un)) {
-                or = un.sort();
-                or.forEach(function(v, i) {
+                // Sort or don't sort arrays
+                if (document.getElementById('noarray').checked) {
+                    or = un;
+                } else {
+                    or = un.sort();
+                }
+
+                or.forEach(function (v, i) {
                     or[i] = sortJSON(v)
                 });
             } else if (isPlainObject(un)) {
                 or = {};
-                Object.keys(un).sort().forEach(function(key) {
+                Object.keys(un).sort(function (a, b) {
+                    if (a.toLowerCase() < b.toLowerCase()) return -1;
+                    if (a.toLowerCase() > b.toLowerCase()) return 1;
+                    return 0;
+                }).forEach(function (key) {
                     or[key] = sortJSON(un[key]);
                 });
             } else {
@@ -199,9 +216,9 @@
         }
     </script>
     <script>
-        (function(i, s, o, g, r, a, m) {
+        (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
+            i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date();
             a = s.createElement(o),
@@ -215,3 +232,5 @@
         ga('send', 'pageview');
     </script>
 </body>
+
+</html>

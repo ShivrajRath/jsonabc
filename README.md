@@ -9,6 +9,7 @@ Sorts JSON object alphabetically. It supports nested objects, arrays and collect
 - Has offline supports
 - IE9+ Support
 - Mobile/ Tablet friendly
+- Sorting plain arrays is optional
 
 #### Example
 

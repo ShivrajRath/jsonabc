@@ -14,7 +14,7 @@
 <meta name=msapplication-navbutton-color content=#e6a117>
 <meta name=apple-mobile-web-app-status-bar-style content=#e6a117>
 <title>JSON ABC - Sort JSON Alphabetically</title>
-<style>*{margin:0;border:0;padding:0;line-height:125%;vertical-align:baseline;font-family:'Palatino',sans-serif}html,body{height:100%;overflow:hidden}body{margin:2% 5%;line-height:25px}h2{color:#e6a117}em{font-weight:normal}a{color:#000;text-decoration:none;border-bottom:1px solid #000;padding-bottom:3px;cursor:pointer}span>*{display:inline-block}.ad{float:right}.h{font-size:.9em;padding:1% 0}.m{height:65%}.m .t,.m .t:focus,.m .t:active{width:95%;height:85%;padding:2%;resize:none;outline:0;font-size:1em;text-decoration:none;border:1px solid #e6a117;font-family:"Courier New",Courier,monospace}.m .f{font-size:1em;margin:0 auto;display:block;cursor:pointer;background:0;padding:1.5% 4% 1% 4%;border:1px solid #e6a117}.b{color:#e6a117}.c{text-align:center;padding-top:2%}@media only screen and (max-width :768px){.ad{display:none;.m .t{font-size:.5em}}}@media only screen and (max-width :420px){.ad{display:none;.m .t{font-size:.3em}}}</style>
+<style>*{margin:0;border:0;padding:0;vertical-align:baseline;font-family:'Palatino','Calibri',sans-serif}html,body{height:100%;overflow:hidden}body{margin:2% 5%;line-height:25px}h2{color:#e6a117}em{font-weight:normal}a{color:#000;text-decoration:none;border-bottom:1px solid #000;padding-bottom:3px;cursor:pointer}span>*{display:inline-block}.ad{float:right}.h{font-size:.9em;padding:1% 0}.m{height:65%}.m .t,.m .t:focus,.m .t:active{width:95%;height:85%;padding:2%;resize:none;outline:0;font-size:1em;text-decoration:none;border:1px solid #e6a117;font-family:"Courier New",Courier,monospace}.m .f{font-size:1em;margin:0 auto;display:block;cursor:pointer;background:0;padding:1.5% 4% 1% 4%;border:1px solid #e6a117}.b{color:#e6a117}.c{text-align:center;padding-top:2%}.mb10{margin-bottom:10px}@media only screen and (max-width:768px){.ad{display:none;.m .t{font-size:.5em}}}@media only screen and (max-width:420px){.ad{display:none;.m .t{font-size:.3em}}}</style>
 </head>
 <body>
 <div class=h>
@@ -28,6 +28,11 @@
 <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
 </div>
+<div class="o mb10">
+<span>Options: &nbsp;&nbsp;</span>
+<input type=checkbox id=noarray name=noarray value=true>
+<label for=noarray>Spare plain Arrays</label>
+</div>
 <div class=m>
 <textarea id=t class=t name=jsonabc placeholder="Paste your unsorted JSON here" spellcheck=false></textarea>
 <input type=button class=f value="SORT ABC" onclick=sort()>
@@ -39,6 +44,7 @@
 </h3>
 </p>
 </div>
-<script>function isArray(a){return Object.prototype.toString.call(a)==="[object Array]"}function isPlainObject(a){return Object.prototype.toString.call(a)==="[object Object]"}function sortJSON(a){var b={};if(isArray(a)){b=a.sort();b.forEach(function(c,d){b[d]=sortJSON(c)})}else{if(isPlainObject(a)){b={};Object.keys(a).sort().forEach(function(c){b[c]=sortJSON(a[c])})}else{b=a}}return b}function sort(){var a,b,d;a=document.getElementById("t").value;if(a){try{b=JSON.parse(a);d=sortJSON(b);document.getElementById("t").value=JSON.stringify(d,null,4)}catch(c){alert("Incorrect JSON object")}}}</script>
+<script>function isArray(a){return Object.prototype.toString.call(a)==="[object Array]"}function isPlainObject(a){return Object.prototype.toString.call(a)==="[object Object]"}function sortJSON(a){var b={};if(isArray(a)){if(document.getElementById("noarray").checked){b=a}else{b=a.sort()}b.forEach(function(c,d){b[d]=sortJSON(c)})}else{if(isPlainObject(a)){b={};Object.keys(a).sort(function(d,c){if(d.toLowerCase()<c.toLowerCase()){return -1}if(d.toLowerCase()>c.toLowerCase()){return 1}return 0}).forEach(function(c){b[c]=sortJSON(a[c])})}else{b=a}}return b}function sort(){var a,b,d;a=document.getElementById("t").value;if(a){try{b=JSON.parse(a);d=sortJSON(b);document.getElementById("t").value=JSON.stringify(d,null,4)}catch(c){alert("Incorrect JSON object")}}}</script>
 <script>(function(d,e,j,h,f,c,b){d.GoogleAnalyticsObject=f;d[f]=d[f]||function(){(d[f].q=d[f].q||[]).push(arguments)},d[f].l=1*new Date();c=e.createElement(j),b=e.getElementsByTagName(j)[0];c.async=1;c.src=h;b.parentNode.insertBefore(c,b)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create","UA-58536835-1","auto");ga("send","pageview");</script>
 </body>
+</html>

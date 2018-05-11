@@ -15,115 +15,7 @@
     <meta name="msapplication-navbutton-color" content="#e6a117">
     <meta name="apple-mobile-web-app-status-bar-style" content="#e6a117">
     <title>JSON ABC - Sort JSON Alphabetically</title>
-    <style>
-        * {
-            margin: 0;
-            border: 0;
-            padding: 0;
-            vertical-align: baseline;
-            font-family: 'Palatino', 'Calibri', sans-serif;
-        }
-
-        html,
-        body {
-            height: 100%;
-            overflow: hidden;
-        }
-
-        body {
-            margin: 2% 5%;
-            line-height: 25px;
-        }
-
-        h2 {
-            color: #e6a117;
-        }
-
-        em {
-            font-weight: normal;
-        }
-
-        a {
-            color: #000;
-            text-decoration: none;
-            border-bottom: 1px solid #000;
-            padding-bottom: 3px;
-            cursor: pointer;
-        }
-
-        span>* {
-            display: inline-block;
-        }
-
-        .ad {
-            float: right;
-        }
-
-        .h {
-            font-size: 0.9em;
-            padding: 1% 0;
-        }
-
-        .m {
-            height: 65%;
-        }
-
-        .m .t,
-        .m .t:focus,
-        .m .t:active {
-            width: 95%;
-            height: 85%;
-            padding: 2%;
-            resize: none;
-            outline: none;
-            font-size: 1em;
-            text-decoration: none;
-            border: 1px solid #e6a117;
-            font-family: "Courier New", Courier, monospace;
-        }
-
-        .m .f {
-            font-size: 1em;
-            margin: 0 auto;
-            display: block;
-            cursor: pointer;
-            background: none;
-            padding: 1.5% 4% 1% 4%;
-            border: 1px solid #e6a117;
-        }
-
-        .b {
-            color: #e6a117;
-        }
-
-        .c {
-            text-align: center;
-            padding-top: 2%;
-        }
-
-        .mb10 {
-            margin-bottom: 10px;
-        }
-
-        @media only screen and (max-width: 768px) {
-            .ad {
-                display: none;
-            }
-            .m .t {
-                font-size: 0.5em;
-            }
-        }
-
-        @media only screen and (max-width: 420px) {
-            .ad {
-                display: none;
-
-            }
-            .m .t {
-                font-size: 0.3em;
-            }
-        }
-    </style>
+    <link href="style/app.css" rel="stylesheet">
 </head>
 
 <body>
@@ -137,48 +29,7 @@
 
         <div class="ad">
             <style>
-                .bmc-button img {
-                    width: 27px !important;
-                    margin-bottom: 3px !important;
-                    box-shadow: none !important;
-                    border: none !important;
-                    vertical-align: middle !important;
-                }
 
-                .bmc-button {
-                    line-height: 36px !important;
-                    height: 37px !important;
-                    text-decoration: none !important;
-                    display: inline-block !important;
-                    color: #FFFFFF !important;
-                    background-color: #FF813F !important;
-                    border-radius: 3px !important;
-                    border: 1px solid transparent !important;
-                    padding: 1px 9px !important;
-                    font-size: 23px !important;
-                    letter-spacing: 0.6px !important;
-                    box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
-                    -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
-                    margin: 0 auto !important;
-                    font-family: 'Cookie', cursive !important;
-                    -webkit-box-sizing: border-box !important;
-                    box-sizing: border-box !important;
-                    -o-transition: 0.3s all linear !important;
-                    -webkit-transition: 0.3s all linear !important;
-                    -moz-transition: 0.3s all linear !important;
-                    -ms-transition: 0.3s all linear !important;
-                    transition: 0.3s all linear !important;
-                }
-
-                .bmc-button:hover,
-                .bmc-button:active,
-                .bmc-button:focus {
-                    -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
-                    text-decoration: none !important;
-                    box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
-                    opacity: 0.85 !important;
-                    color: #FFFFFF !important;
-                }
             </style>
             <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
             <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/rath">
@@ -197,94 +48,16 @@
         <input type="button" class="f" value="SORT ABC" onclick="sort()">
         <p>
             <h3 class="c">
-                <a href="http://twitter.com/shivrajrath" target="_blank">Twitter</a>&nbsp;&nbsp;&nbsp;
-                <a href="http://github.com/shivrajrath" target="_blank">Github</a>&nbsp;&nbsp;&nbsp;
+                <a href="https://twitter.com/shivrajrath" target="_blank">Twitter</a>&nbsp;&nbsp;&nbsp;
+                <a href="https://github.com/shivrajrath" target="_blank">Github</a>&nbsp;&nbsp;&nbsp;
                 <a href="http://novicelab.org" target="_blank">Blog</a>
             </h3>
         </p>
     </div>
-    <script>
-        // Is a value an array
-        function isArray(val) {
-            return Object.prototype.toString.call(val) === "[object Array]";
-        }
 
-        // Is a value an Object
-        function isPlainObject(val) {
-            return Object.prototype.toString.call(val) === "[object Object]";
-        }
+    <script src="index.js"></script>
 
-        // Sorting Logic
-        function sortJSON(un) {
-            var or = {};
-
-            if (isArray(un)) {
-                // Sort or don't sort arrays
-                if (document.getElementById('noarray').checked) {
-                    or = un;
-                } else {
-                    or = un.sort();
-                }
-
-                or.forEach(function (v, i) {
-                    or[i] = sortJSON(v)
-                });
-            } else if (isPlainObject(un)) {
-                or = {};
-                Object.keys(un).sort(function (a, b) {
-                    if (a.toLowerCase() < b.toLowerCase()) return -1;
-                    if (a.toLowerCase() > b.toLowerCase()) return 1;
-                    return 0;
-                }).forEach(function (key) {
-                    or[key] = sortJSON(un[key]);
-                });
-            } else {
-                or = un;
-            }
-
-            return or;
-        }
-
-        // Remove trailing commas
-        function cleanJSON(input) {
-            input = input.replace(/,[ \t\r\n]+}/g, '}');
-            input = input.replace(/,[ \t\r\n]+\]/g, ']');
-            return input;
-        }
-
-        // Sort the JSON
-        function sort() {
-            var input, j, r;
-
-            input = document.getElementById('t').value;
-            if (input) {
-                try {
-                    input = cleanJSON(input);
-                    j = JSON.parse(input);
-                    r = sortJSON(j);
-                    document.getElementById('t').value = JSON.stringify(r, null, 4);
-                } catch (ex) {
-                    alert('Incorrect JSON object');
-                }
-            }
-        }
-    </script>
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-58536835-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+    <script src="src/app.js"></script>
 </body>
 
 </html>

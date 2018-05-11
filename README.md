@@ -15,7 +15,7 @@ Sorts JSON object alphabetically. It supports nested objects, arrays and collect
 
 It converts this
 
-```javascript
+```json
 {
 	"object": {
 		"b": 2,
@@ -42,7 +42,7 @@ It converts this
 
 to this
 
-```javascript
+```json
 {
     "array": [
         "1",

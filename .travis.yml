@@ -1,0 +1,13 @@
+
+language: node_js
+
+node_js: 8
+
+git:
+  depth: 8
+
+install: npm install
+
+script: npm test
+
+# End.

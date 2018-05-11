@@ -1,5 +1,5 @@
 
-
+/* eslint-disable */
 (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
     i[r] = i[r] || function () {
@@ -14,3 +14,4 @@
 
 ga('create', 'UA-58536835-1', 'auto');
 ga('send', 'pageview');
+/* eslint-enable */

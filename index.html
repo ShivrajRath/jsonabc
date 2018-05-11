@@ -38,14 +38,17 @@
             </a>
         </div>
     </div>
+
+    <form id="form" onsubmit="sort(event)">
+
     <div class="o mb10">
         <span>Options: &nbsp;&nbsp;</span>
         <input type="checkbox" id="noarray" name="noarray" value="true">
         <label for="noarray">Spare plain Arrays</label>
     </div>
     <div class="m">
-        <textarea id="t" class="t" name="jsonabc" placeholder="Paste your unsorted JSON here" spellcheck="false"></textarea>
-        <input type="button" class="f" value="SORT ABC" onclick="sort()">
+        <textarea id="t" class="t" name="jsonabc" placeholder="Paste your unsorted JSON here" spellcheck="false" required aria-required="true"></textarea>
+        <input type="submit" class="f" value="SORT ABC" data-onclick="sort()">
         <p>
             <h3 class="c">
                 <a href="https://twitter.com/shivrajrath" target="_blank">Twitter</a>&nbsp;&nbsp;&nbsp;
@@ -54,6 +57,8 @@
             </h3>
         </p>
     </div>
+
+    </form>
 
     <script src="index.js"></script>
 

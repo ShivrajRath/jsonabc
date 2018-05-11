@@ -52,10 +52,13 @@ function cleanJSON (input) {
 }
 
 // Sort the JSON
-function sort () {
+function sort (ev) {
   var input, j, r;
 
   input = document.getElementById('t').value;
+
+  ev && ev.preventDefault();
+
   if (input) {
     try {
       input = cleanJSON(input);

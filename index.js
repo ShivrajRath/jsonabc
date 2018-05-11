@@ -1,7 +1,8 @@
-/*! jsonabc Javascript.
+/*! JSON ABC Javascript.
 */
 
-window.sort = sort;
+// Start with a single exposed function.
+window.jsonabc = { sort: sort };
 
 // Is a value an array
 function isArray (val) {
@@ -14,12 +15,12 @@ function isPlainObject (val) {
 }
 
 // Sorting Logic
-function sortJSON (un) {
+function sortJSON (un, noarray) {
   var or = {};
 
   if (isArray(un)) {
     // Sort or don't sort arrays
-    if (document.getElementById('noarray').checked) {
+    if (noarray) {
       or = un;
     } else {
       or = un.sort();
@@ -51,25 +52,23 @@ function cleanJSON (input) {
   return input;
 }
 
-// Sort the JSON
-function sort (ev) {
-  var input, j, r;
+// Sort the JSON (clean, parse, sort, stringify).
+function sort (inputStr, noarray) {
+  var output, obj, r;
 
-  input = document.getElementById('t').value;
-
-  ev && ev.preventDefault();
-
-  if (input) {
+  if (inputStr) {
     try {
-      input = cleanJSON(input);
-      j = JSON.parse(input);
-      r = sortJSON(j);
-      document.getElementById('t').value = JSON.stringify(r, null, 4);
+      inputStr = cleanJSON(inputStr);
+      obj = JSON.parse(inputStr);
+      r = sortJSON(obj, noarray);
+      output = JSON.stringify(r, null, 4);
     } catch (ex) {
-      console.error('Incorrect JSON object');
-      window.alert('Incorrect JSON object');
+      console.error('jsonabc: Incorrect JSON object.', ex);
+      // Was: window.alert('Incorrect JSON object');
+      throw ex;
     }
   }
+  return output;
 }
 
 // End.

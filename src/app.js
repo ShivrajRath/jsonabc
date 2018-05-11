@@ -1,3 +1,25 @@
+/*!
+  Form / application "onsubmit" handler, and analytics.
+*/
+
+window.appSort = appSort;
+
+function appSort (ev) {
+  var inputStr = document.getElementById('t').value;
+  var noarray = document.getElementById('noarray').checked;
+
+  ev && ev.preventDefault();
+
+  try {
+    var output = window.jsonabc.sort(inputStr, noarray);
+
+    document.getElementById('t').value = output;
+
+    console.warn('jsonabc input:', JSON.parse(inputStr));
+  } catch (ex) {
+    window.alert('Incorrect JSON object');
+  }
+}
 
 /* eslint-disable */
 (function (i, s, o, g, r, a, m) {

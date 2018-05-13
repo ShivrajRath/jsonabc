@@ -28,9 +28,7 @@
         </span>
 
         <div class="ad">
-            <style>
-
-            </style>
+            <style> </style>
             <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
             <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/rath">
                 <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">
@@ -39,7 +37,7 @@
         </div>
     </div>
 
-    <form id="form" onsubmit="appSort(event)">
+    <form onsubmit="appSort(event, 't')">
 
     <div class="o mb10">
         <span>Options: &nbsp;&nbsp;</span>
@@ -47,8 +45,9 @@
         <label for="noarray">Spare plain Arrays</label>
     </div>
     <div class="m">
-        <textarea id="t" class="t" name="jsonabc" placeholder="Paste your unsorted JSON here" spellcheck="false" required aria-required="true"></textarea>
-        <input type="submit" class="f" value="SORT ABC" data-onclick="sort()">
+        <textarea id="t" class="t" name="jsonabc" placeholder="Paste your unsorted JSON here"
+          aria-label="Paste your unsorted JSON here" spellcheck="false" required aria-required="true"></textarea>
+        <input type="submit" class="f" value="SORT ABC" data-Was-onclick="sort()">
         <p>
             <h3 class="c">
                 <a href="https://twitter.com/shivrajrath" target="_blank">Twitter</a>&nbsp;&nbsp;&nbsp;
@@ -60,7 +59,7 @@
 
     </form>
 
-    <script src="index.js"></script>
+    <script src="dist/jsonabc.js"></script>
 
     <script src="src/app.js"></script>
 </body>

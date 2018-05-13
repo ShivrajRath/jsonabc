@@ -1,8 +1,11 @@
 /*! JSON ABC Javascript.
 */
 
-// Start with a single exposed function.
-window.jsonabc = { sort: sort };
+module.exports = {
+  sort: sort,
+  sortObj: sortObj,
+  cleanJSON: cleanJSON
+};
 
 // Is a value an array
 function isArray (val) {
@@ -14,8 +17,10 @@ function isPlainObject (val) {
   return Object.prototype.toString.call(val) === '[object Object]';
 }
 
-// Sorting Logic
-function sortJSON (un, noarray) {
+// Sorting Logic (Was: 'sortJSON')
+function sortObj (un, noarray) {
+  noarray = noarray || false;
+
   var or = {};
 
   if (isArray(un)) {
@@ -27,7 +32,7 @@ function sortJSON (un, noarray) {
     }
 
     or.forEach(function (v, i) {
-      or[i] = sortJSON(v);
+      or[i] = sortObj(v);
     });
   } else if (isPlainObject(un)) {
     or = {};
@@ -36,7 +41,7 @@ function sortJSON (un, noarray) {
       if (a.toLowerCase() > b.toLowerCase()) return 1;
       return 0;
     }).forEach(function (key) {
-      or[key] = sortJSON(un[key]);
+      or[key] = sortObj(un[key]);
     });
   } else {
     or = un;
@@ -60,10 +65,10 @@ function sort (inputStr, noarray) {
     try {
       inputStr = cleanJSON(inputStr);
       obj = JSON.parse(inputStr);
-      r = sortJSON(obj, noarray);
+      r = sortObj(obj, noarray);
       output = JSON.stringify(r, null, 4);
     } catch (ex) {
-      console.error('jsonabc: Incorrect JSON object.', ex);
+      console.error('jsonabc: Incorrect JSON object.', [], ex);
       // Was: window.alert('Incorrect JSON object');
       throw ex;
     }

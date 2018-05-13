@@ -1,4 +1,6 @@
 package-lock.json
+dist/
+test/
 
 node_modules/
 bower_components/

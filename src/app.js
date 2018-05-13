@@ -2,20 +2,22 @@
   Form / application "onsubmit" handler, and analytics.
 */
 
+var jsonabc = require('jsonabc');
+
 window.appSort = appSort;
 
-function appSort (ev) {
-  var inputStr = document.getElementById('t').value;
+function appSort (ev, tid) {
+  var inputStr = document.getElementById(tid).value;
   var noarray = document.getElementById('noarray').checked;
 
-  ev && ev.preventDefault();
+  ev.preventDefault();
 
   try {
-    var output = window.jsonabc.sort(inputStr, noarray);
+    var output = jsonabc.sort(inputStr, noarray);
 
-    document.getElementById('t').value = output;
+    document.getElementById(tid).value = output;
 
-    console.warn('jsonabc input:', JSON.parse(inputStr));
+    console.warn('jsonabc input:', JSON.parse(inputStr), noarray);
   } catch (ex) {
     window.alert('Incorrect JSON object');
   }

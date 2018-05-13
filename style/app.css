@@ -38,6 +38,10 @@ span > * {
     display: inline-block;
 }
 
+form {
+  display: inline;
+}
+
 .ad {
     float: right;
 }
@@ -56,7 +60,7 @@ span > * {
 .m .t:active {
     width: 95%;
     height: 85%;
-    min-height: 250px;
+    /* min-height: 250px; */
     padding: 2%;
     resize: none;
     outline: none;

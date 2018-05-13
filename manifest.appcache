@@ -1,5 +1,8 @@
 CACHE MANIFEST
-# 2018-03-01:v5
+# 2018-05-11:v2.x
 
 /favicon.ico
 index.html
+dist/jsonabc.js
+src/app.js
+style/app.css

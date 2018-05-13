@@ -86,6 +86,9 @@ to this
 
 [JSON ABC][]
 
+---
+License: [MIT][]
+
 [json abc]: http://novicelab.org/jsonabc "JSON ABC online"
 [travis-icon]: https://travis-ci.org/nfreear/jsonabc.svg?branch=2.x
 [travis]: https://travis-ci.org/nfreear/jsonabc "Build status — Travis-CI"

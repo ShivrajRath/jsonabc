@@ -1,4 +1,5 @@
-/*! JSON ABC Javascript.
+/*!
+  JSON ABC | License: MIT.
 */
 
 module.exports = {
@@ -7,12 +8,12 @@ module.exports = {
   cleanJSON: cleanJSON
 };
 
-// Is a value an array
+// Is a value an array?
 function isArray (val) {
   return Object.prototype.toString.call(val) === '[object Array]';
 }
 
-// Is a value an Object
+// Is a value an Object?
 function isPlainObject (val) {
   return Object.prototype.toString.call(val) === '[object Object]';
 }

@@ -1,8 +1,11 @@
-### JSON ABC
+
+[![Build Status][travis-icon]][travis]
+
+## JSON ABC
 
 Sorts JSON object alphabetically. It supports nested objects, arrays and collections. Works offline and beautifies JSON object too.
 
-#### Supports
+### Supports
 
 - Beautifies JSON
 - Sorts Plain Objects, Collections, Arrays
@@ -11,11 +14,11 @@ Sorts JSON object alphabetically. It supports nested objects, arrays and collect
 - Mobile/ Tablet friendly
 - Sorting plain arrays is optional
 
-#### Example
+### Example
 
 It converts this
 
-```javascript
+```json
 {
 	"object": {
 		"b": 2,
@@ -42,7 +45,7 @@ It converts this
 
 to this
 
-```javascript
+```json
 {
     "array": [
         "1",
@@ -81,4 +84,12 @@ to this
 }
 ```
 
-[JSON ABC](http://novicelab.org/jsonabc "JSON ABC")
+[JSON ABC][]
+
+---
+License: [MIT][]
+
+[json abc]: http://novicelab.org/jsonabc "JSON ABC online"
+[travis-icon]: https://travis-ci.org/nfreear/jsonabc.svg?branch=2.x
+[travis]: https://travis-ci.org/nfreear/jsonabc "Build status — Travis-CI"
+[mit]: https://mit-license.org/2016?c=ShivrajRath

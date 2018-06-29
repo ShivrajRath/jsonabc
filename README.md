@@ -14,6 +14,21 @@ Sorts JSON object alphabetically. It supports nested objects, arrays and collect
 - Mobile/ Tablet friendly
 - Sorting plain arrays is optional
 
+### Usage
+
+ 1. Used directly in Node:
+    ```js
+    var myJsonAbc = require('jsonabc');
+    var sorted = myJsonAbc.sortObj({ c: 0, b: 1, a: 0 });
+    ```
+ 2. Built by Browserify, for directly inclusion in the browser:
+    ```html
+    <script src="dist/jsonabc.js"></script>
+    <script>
+      var output = jsonabc.sort(inputStr, noarray);
+    </script>
+    ```
+
 ### Example
 
 It converts this

@@ -6,4 +6,4 @@ docs-out/
 test/
 tests/
 TO_DO.md
-
+*.log

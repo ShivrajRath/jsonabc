@@ -1,6 +1,10 @@
-node_modules/,
-bower_components/,
-docs-out/,
-test/,
+package-lock.json
+dist/
+test/
+
+node_modules/
+bower_components/
+docs-out/
+test/
 tests/
 TO_DO.md

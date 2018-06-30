@@ -14,6 +14,8 @@ Sorts JSON object alphabetically. It supports nested objects, arrays and collect
 - Mobile/ Tablet friendly
 - Sorting plain arrays is optional
 
+### Download
+ ```npm install jsonabc```
 ### Usage
 
  1. Used directly in Node:

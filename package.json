@@ -1,7 +1,6 @@
 {
-  "private": true,
   "name": "jsonabc",
-  "version": "2.0.0",
+  "version": "2.3.0",
   "license": "MIT",
   "description": "Sorts JSON object alphabetically. It supports nested objects, arrays and collections. Works offline and beautifies JSON object too.",
   "browser": "dist/jsonabc.js",
@@ -11,6 +10,7 @@
   "bugs": "https://github.com/ShivrajRath/jsonabc/issues",
   "author": "Shivraj Rath",
   "contributors": [
+    "Shivraj Rath",
     "Nick Freear"
   ],
   "devDependencies": {
@@ -30,6 +30,9 @@
   "keywords": [
     "sorting",
     "beautify",
-    "alphabet"
+    "alphabet",
+    "sorts json",
+    "json",
+    "utility"
   ]
 }

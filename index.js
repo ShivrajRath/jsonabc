@@ -18,7 +18,7 @@ function isPlainObject (val) {
   return Object.prototype.toString.call(val) === '[object Object]';
 }
 
-// Sorting Logic (Was: 'sortJSON')
+// Sorting Logic
 function sortObj (un, noarray) {
   noarray = noarray || false;
 
@@ -70,7 +70,6 @@ function sort (inputStr, noarray) {
       output = JSON.stringify(r, null, 4);
     } catch (ex) {
       console.error('jsonabc: Incorrect JSON object.', [], ex);
-      // Was: window.alert('Incorrect JSON object');
       throw ex;
     }
   }

@@ -5,6 +5,10 @@
 
 Sorts JSON object alphabetically. It supports nested objects, arrays and collections. Works offline and beautifies JSON object too.
 
+### Try it (Demo)
+
+[JSON ABC][]
+
 ### Supports
 
 - Beautifies JSON
@@ -100,8 +104,6 @@ to this
     }
 }
 ```
-
-[JSON ABC][]
 
 ---
 License: [MIT][]

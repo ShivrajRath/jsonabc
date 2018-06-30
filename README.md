@@ -105,6 +105,6 @@ to this
 License: [MIT][]
 
 [json abc]: http://novicelab.org/jsonabc "JSON ABC online"
-[travis-icon]: https://travis-ci.org/nfreear/jsonabc.svg?branch=2.x
-[travis]: https://travis-ci.org/nfreear/jsonabc "Build status — Travis-CI"
+[travis-icon]: https://travis-ci.org/ShivrajRath/jsonabc.svg?branch=master
+[travis]: https://travis-ci.org/ShivrajRath/jsonabc "Build status — Travis-CI"
 [mit]: https://mit-license.org/2016?c=ShivrajRath

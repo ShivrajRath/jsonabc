@@ -33,7 +33,7 @@ function sortObj (un, noarray) {
     }
 
     or.forEach(function (v, i) {
-      or[i] = sortObj(v);
+      or[i] = sortObj(v, noarray);
     });
   } else if (isPlainObject(un)) {
     or = {};
@@ -42,7 +42,7 @@ function sortObj (un, noarray) {
       if (a.toLowerCase() > b.toLowerCase()) return 1;
       return 0;
     }).forEach(function (key) {
-      or[key] = sortObj(un[key]);
+      or[key] = sortObj(un[key], noarray);
     });
   } else {
     or = un;

@@ -19,7 +19,7 @@ function isPlainObject (val) {
   return Object.prototype.toString.call(val) === '[object Object]';
 }
 
-// Sorting Logic (Was: 'sortJSON')
+// Sorting Logic
 function sortObj (un, noarray) {
   noarray = noarray || false;
 
@@ -34,7 +34,7 @@ function sortObj (un, noarray) {
     }
 
     or.forEach(function (v, i) {
-      or[i] = sortObj(v);
+      or[i] = sortObj(v, noarray);
     });
   } else if (isPlainObject(un)) {
     or = {};
@@ -43,7 +43,7 @@ function sortObj (un, noarray) {
       if (a.toLowerCase() > b.toLowerCase()) return 1;
       return 0;
     }).forEach(function (key) {
-      or[key] = sortObj(un[key]);
+      or[key] = sortObj(un[key], noarray);
     });
   } else {
     or = un;
@@ -71,7 +71,6 @@ function sort (inputStr, noarray) {
       output = JSON.stringify(r, null, 4);
     } catch (ex) {
       console.error('jsonabc: Incorrect JSON object.', [], ex);
-      // Was: window.alert('Incorrect JSON object');
       throw ex;
     }
   }

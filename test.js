@@ -12,7 +12,7 @@ describe('Trailing commas', function () {
 });
 
 describe('Sorting', function () {
-  let input, expectedOutput, expectedOutputWithoutArray;
+  let input, inputPlainArrInPlainObj, outputPlainArrInPlainObj, expectedOutput, expectedOutputWithoutArray;
 
   beforeEach(function () {
     input = {
@@ -46,25 +46,26 @@ describe('Sorting', function () {
         'c',
         'd'
       ],
-      'collection': [{
-        'a': 1,
-        'b': 2,
-        'c': 3,
-        'd': 4
-      },
-      {
-        '__a2': 1,
-        '__b1': 2,
-        '__c4': 3,
-        '__d3': 4
-      },
-      [
-        '1',
-        'a',
-        'b',
-        'c',
-        'd'
-      ]
+      'collection': [
+        [
+          '1',
+          'a',
+          'b',
+          'c',
+          'd'
+        ],
+        {
+          '__a2': 1,
+          '__b1': 2,
+          '__c4': 3,
+          '__d3': 4
+        },
+        {
+          'a': 1,
+          'b': 2,
+          'c': 3,
+          'd': 4
+        }
       ],
       'object': {
         'a': 1,
@@ -109,6 +110,27 @@ describe('Sorting', function () {
         'd': 4
       }
     };
+
+    inputPlainArrInPlainObj = [{
+      'b': 2,
+      'a': 2
+    },
+    {
+      'a': 1,
+      'b': 1
+    }
+    ];
+
+    outputPlainArrInPlainObj = [{
+      'a': 1,
+      'b': 1
+    },
+
+    {
+      'a': 2,
+      'b': 2
+    }
+    ];
   });
 
   it('should sort complex JSON', function () {
@@ -117,5 +139,9 @@ describe('Sorting', function () {
 
   it('should sort JSON without array option', function () {
     expect(jsonabc.sortObj(input, true)).to.deep.equal(expectedOutputWithoutArray);
+  });
+
+  it('should sort plain objects in plain array', function () {
+    expect(jsonabc.sortObj(inputPlainArrInPlainObj)).to.deep.equal(outputPlainArrInPlainObj);
   });
 });

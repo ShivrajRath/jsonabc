@@ -35,6 +35,14 @@ function sortObj (un, noarray) {
     or.forEach(function (v, i) {
       or[i] = sortObj(v, noarray);
     });
+
+    if (!noarray) {
+      or = or.sort(function (a, b) {
+        a = JSON.stringify(a);
+        b = JSON.stringify(b);
+        return a < b ? -1 : (a > b ? 1 : 0);
+      });
+    }
   } else if (isPlainObject(un)) {
     or = {};
     Object.keys(un).sort(function (a, b) {

@@ -67,7 +67,7 @@ function cleanJSON (input) {
 }
 
 // Sort the JSON (clean, parse, sort, stringify).
-function sort (inputStr, noarray) {
+function sort (inputStr, noarray, space = 4) {
   var output, obj, r;
 
   if (inputStr) {
@@ -75,7 +75,7 @@ function sort (inputStr, noarray) {
       inputStr = cleanJSON(inputStr);
       obj = JSON.parse(inputStr);
       r = sortObj(obj, noarray);
-      output = JSON.stringify(r, null, 4);
+      output = JSON.stringify(r, null, space);
     } catch (ex) {
       console.error('jsonabc: Incorrect JSON object.', [], ex);
       throw ex;

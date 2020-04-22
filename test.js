@@ -1,6 +1,6 @@
-let expect = require('chai').expect;
+const expect = require('chai').expect;
 
-let jsonabc = require('./index');
+const jsonabc = require('./index');
 
 describe('Trailing commas', function () {
   it('should remove from plain object', function () {
@@ -16,37 +16,37 @@ describe('Sorting', function () {
 
   beforeEach(function () {
     input = {
-      'object': {
-        'b': 2,
-        'a': 1,
-        'd': 4,
-        'c': 3
+      object: {
+        b: 2,
+        a: 1,
+        d: 4,
+        c: 3
       },
-      'array': ['d', '1', 'c', 'a', 'b'],
-      'collection': [{
-        'b': 2,
-        'a': 1,
-        'd': 4,
-        'c': 3
+      array: ['d', '1', 'c', 'a', 'b'],
+      collection: [{
+        b: 2,
+        a: 1,
+        d: 4,
+        c: 3
       }, {
-        '__b1': 2,
-        '__a2': 1,
-        '__d3': 4,
-        '__c4': 3
+        __b1: 2,
+        __a2: 1,
+        __d3: 4,
+        __c4: 3
       },
       ['d', '1', 'c', 'a', 'b']
       ]
     };
 
     expectedOutput = {
-      'array': [
+      array: [
         '1',
         'a',
         'b',
         'c',
         'd'
       ],
-      'collection': [
+      collection: [
         [
           '1',
           'a',
@@ -55,45 +55,45 @@ describe('Sorting', function () {
           'd'
         ],
         {
-          '__a2': 1,
-          '__b1': 2,
-          '__c4': 3,
-          '__d3': 4
+          __a2: 1,
+          __b1: 2,
+          __c4: 3,
+          __d3: 4
         },
         {
-          'a': 1,
-          'b': 2,
-          'c': 3,
-          'd': 4
+          a: 1,
+          b: 2,
+          c: 3,
+          d: 4
         }
       ],
-      'object': {
-        'a': 1,
-        'b': 2,
-        'c': 3,
-        'd': 4
+      object: {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4
       }
     };
 
     expectedOutputWithoutArray = {
-      'array': [
+      array: [
         'd',
         '1',
         'c',
         'a',
         'b'
       ],
-      'collection': [{
-        'a': 1,
-        'b': 2,
-        'c': 3,
-        'd': 4
+      collection: [{
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4
       },
       {
-        '__a2': 1,
-        '__b1': 2,
-        '__c4': 3,
-        '__d3': 4
+        __a2: 1,
+        __b1: 2,
+        __c4: 3,
+        __d3: 4
       },
       [
         'd',
@@ -103,32 +103,32 @@ describe('Sorting', function () {
         'b'
       ]
       ],
-      'object': {
-        'a': 1,
-        'b': 2,
-        'c': 3,
-        'd': 4
+      object: {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4
       }
     };
 
     inputPlainArrInPlainObj = [{
-      'b': 2,
-      'a': 2
+      b: 2,
+      a: 2
     },
     {
-      'a': 1,
-      'b': 1
+      a: 1,
+      b: 1
     }
     ];
 
     outputPlainArrInPlainObj = [{
-      'a': 1,
-      'b': 1
+      a: 1,
+      b: 1
     },
 
     {
-      'a': 2,
-      'b': 2
+      a: 2,
+      b: 2
     }
     ];
   });

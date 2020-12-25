@@ -14,10 +14,10 @@
     "Nick Freear"
   ],
   "devDependencies": {
-    "browserify": "^16.2.2",
-    "chai": "^4.1.2",
-    "mocha": "^5.2.0",
-    "semistandard": "^12.0.1"
+    "browserify": "^16.5.1",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "semistandard": "^14.2.0"
   },
   "semistandard": {
     "globals": [

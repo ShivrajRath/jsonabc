@@ -1,10 +1,11 @@
 {
   "name": "jsonabc",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "license": "MIT",
   "description": "Sorts JSON object alphabetically. It supports nested objects, arrays and collections. Works offline and beautifies JSON object too.",
   "browser": "dist/jsonabc.js",
   "main": "index.js",
+  "react-native":"index.js",
   "homepage": "https://novicelab.org/jsonabc",
   "repository": "https://github.com/ShivrajRath/jsonabc",
   "bugs": "https://github.com/ShivrajRath/jsonabc/issues",

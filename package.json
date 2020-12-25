@@ -1,6 +1,6 @@
 {
   "name": "jsonabc",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "license": "MIT",
   "description": "Sorts JSON object alphabetically. It supports nested objects, arrays and collections. Works offline and beautifies JSON object too.",
   "browser": "dist/jsonabc.js",

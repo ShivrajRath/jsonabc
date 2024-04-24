@@ -11,11 +11,12 @@ function appSort(ev, tid) {
   var noarray = document.getElementById('noarray').checked;
   var useTabs = document.getElementById('useTabs').checked;
   var spacer = useTabs ? '\t' : 4;
+  var arbComments = document.getElementById('arbComments').checked;
 
   ev.preventDefault();
 
   try {
-    var output = jsonabc.sort(inputStr, noarray, spacer);
+    var output = jsonabc.sort(inputStr, noarray, spacer, arbComments);
 
     document.getElementById(tid).value = output;
 

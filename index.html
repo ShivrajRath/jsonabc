@@ -39,24 +39,26 @@
 
     <form onsubmit="appSort(event, 't')">
 
-    <div class="o mb10">
-        <span>Options: &nbsp;&nbsp;</span>
-        <input type="checkbox" id="noarray" name="noarray" value="true">
-        <label for="noarray">Spare plain Arrays</label>
+        <div class="o mb10">
+            <span>Options: &nbsp;&nbsp;</span>
+            <input type="checkbox" id="noarray" name="noarray" value="true">
+            <label for="noarray">Spare plain Arrays</label>
             &nbsp;&nbsp;<input type="checkbox" id="useTabs" name="useTabs" value="true">
             <label for="useTabs">Use Tabs for indentation</label>
-    </div>
-    <div class="m">
-        <textarea id="t" class="t" name="jsonabc" placeholder="Paste your unsorted JSON here"
-          aria-label="Paste your unsorted JSON here" spellcheck="false" required aria-required="true"></textarea>
-        <input type="submit" class="f" value="SORT ABC" data-Was-onclick="sort()">
-        <p>
+            &nbsp;&nbsp;<input type="checkbox" id="arbComments" name="arbComments" value="true">
+            <label for="arbComments">Sort ARB file - Keep @comments ordered</label>            
+        </div>
+        <div class="m">
+            <textarea id="t" class="t" name="jsonabc" placeholder="Paste your unsorted JSON here"
+                aria-label="Paste your unsorted JSON here" spellcheck="false" required aria-required="true"></textarea>
+            <input type="submit" class="f" value="SORT ABC" data-Was-onclick="sort()">
+            <p>
             <h3 class="c">
                 <a href="https://github.com/ShivrajRath/jsonabc" target="_blank">Github</a>&nbsp;&nbsp;&nbsp;
                 <a href="https://novicelab.org/jsonsortdiff" target="_blank">JSON abc and diff</a>&nbsp;&nbsp;&nbsp;
             </h3>
-        </p>
-    </div>
+            </p>
+        </div>
 
     </form>
 

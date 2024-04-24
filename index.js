@@ -21,7 +21,7 @@ function isPlainObject (val) {
 // Sorting Logic
 function sortObj (un, noarray) {
   noarray = noarray || false;
-
+  
   var or = {};
 
   if (isArray(un)) {

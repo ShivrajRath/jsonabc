@@ -12,7 +12,13 @@ describe('Trailing commas', function () {
 });
 
 describe('Sorting', function () {
-  let input, inputPlainArrInPlainObj, outputPlainArrInPlainObj, expectedOutput, expectedOutputWithoutArray;
+  let input,
+    inputPlainArrInPlainObj,
+    outputPlainArrInPlainObj,
+    expectedOutput,
+    expectedOutputWithoutArray,
+    inputWithArbComments,
+    outputWithArbComments;
 
   beforeEach(function () {
     input = {
@@ -23,37 +29,27 @@ describe('Sorting', function () {
         c: 3
       },
       array: ['d', '1', 'c', 'a', 'b'],
-      collection: [{
-        b: 2,
-        a: 1,
-        d: 4,
-        c: 3
-      }, {
-        __b1: 2,
-        __a2: 1,
-        __d3: 4,
-        __c4: 3
-      },
-      ['d', '1', 'c', 'a', 'b']
+      collection: [
+        {
+          b: 2,
+          a: 1,
+          d: 4,
+          c: 3
+        },
+        {
+          __b1: 2,
+          __a2: 1,
+          __d3: 4,
+          __c4: 3
+        },
+        ['d', '1', 'c', 'a', 'b']
       ]
     };
 
     expectedOutput = {
-      array: [
-        '1',
-        'a',
-        'b',
-        'c',
-        'd'
-      ],
+      array: ['1', 'a', 'b', 'c', 'd'],
       collection: [
-        [
-          '1',
-          'a',
-          'b',
-          'c',
-          'd'
-        ],
+        ['1', 'a', 'b', 'c', 'd'],
         {
           __a2: 1,
           __b1: 2,
@@ -76,32 +72,21 @@ describe('Sorting', function () {
     };
 
     expectedOutputWithoutArray = {
-      array: [
-        'd',
-        '1',
-        'c',
-        'a',
-        'b'
-      ],
-      collection: [{
-        a: 1,
-        b: 2,
-        c: 3,
-        d: 4
-      },
-      {
-        __a2: 1,
-        __b1: 2,
-        __c4: 3,
-        __d3: 4
-      },
-      [
-        'd',
-        '1',
-        'c',
-        'a',
-        'b'
-      ]
+      array: ['d', '1', 'c', 'a', 'b'],
+      collection: [
+        {
+          a: 1,
+          b: 2,
+          c: 3,
+          d: 4
+        },
+        {
+          __a2: 1,
+          __b1: 2,
+          __c4: 3,
+          __d3: 4
+        },
+        ['d', '1', 'c', 'a', 'b']
       ],
       object: {
         a: 1,
@@ -111,26 +96,61 @@ describe('Sorting', function () {
       }
     };
 
-    inputPlainArrInPlainObj = [{
-      b: 2,
-      a: 2
-    },
-    {
-      a: 1,
-      b: 1
-    }
+    inputPlainArrInPlainObj = [
+      {
+        b: 2,
+        a: 2
+      },
+      {
+        a: 1,
+        b: 1
+      }
     ];
 
-    outputPlainArrInPlainObj = [{
-      a: 1,
-      b: 1
-    },
+    outputPlainArrInPlainObj = [
+      {
+        a: 1,
+        b: 1
+      },
 
-    {
-      a: 2,
-      b: 2
-    }
+      {
+        a: 2,
+        b: 2
+      }
     ];
+
+    inputWithArbComments = {
+      ...input,
+      '@object': 'object comment',
+      '@array': 'array comment'
+    };
+
+    outputWithArbComments = {
+      '@array': 'array comment',
+      array: ['1', 'a', 'b', 'c', 'd'],
+      collection: [
+        ['1', 'a', 'b', 'c', 'd'],
+        {
+          __a2: 1,
+          __b1: 2,
+          __c4: 3,
+          __d3: 4
+        },
+        {
+          a: 1,
+          b: 2,
+          c: 3,
+          d: 4
+        }
+      ],
+      '@object': 'object comment',
+      object: {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4
+      }
+    };
   });
 
   it('should sort complex JSON', function () {
@@ -138,10 +158,20 @@ describe('Sorting', function () {
   });
 
   it('should sort JSON without array option', function () {
-    expect(jsonabc.sortObj(input, true)).to.deep.equal(expectedOutputWithoutArray);
+    expect(jsonabc.sortObj(input, true)).to.deep.equal(
+      expectedOutputWithoutArray
+    );
   });
 
   it('should sort plain objects in plain array', function () {
-    expect(jsonabc.sortObj(inputPlainArrInPlainObj)).to.deep.equal(outputPlainArrInPlainObj);
+    expect(jsonabc.sortObj(inputPlainArrInPlainObj)).to.deep.equal(
+      outputPlainArrInPlainObj
+    );
+  });
+
+  it('should retain arbComments when enabled', function () {
+    expect(jsonabc.sortObj(inputWithArbComments, false, true)).to.deep.equal(
+      outputWithArbComments
+    );
   });
 });

@@ -9,17 +9,17 @@ module.exports = {
 };
 
 // Is a value an array?
-function isArray(val) {
+function isArray (val) {
   return Object.prototype.toString.call(val) === '[object Array]';
 }
 
 // Is a value an Object?
-function isPlainObject(val) {
+function isPlainObject (val) {
   return Object.prototype.toString.call(val) === '[object Object]';
 }
 
 // Sorting Logic
-function sortObj(un, noarray, arbComments) {
+function sortObj (un, noarray, arbComments) {
   noarray = noarray || false;
   arbComments = arbComments || false;
 
@@ -48,8 +48,8 @@ function sortObj(un, noarray, arbComments) {
     or = {};
     Object.keys(un).sort(function (a, b) {
       if (arbComments) {
-        if (a.startsWith("@")) a = a.substring(1);
-        if (b.startsWith("@")) b = b.substring(1);
+        if (a.startsWith('@')) a = a.substring(1);
+        if (b.startsWith('@')) b = b.substring(1);
       }
       if (a.toLowerCase() < b.toLowerCase()) return -1;
       if (a.toLowerCase() > b.toLowerCase()) return 1;
@@ -65,14 +65,14 @@ function sortObj(un, noarray, arbComments) {
 }
 
 // Remove trailing commas
-function cleanJSON(input) {
+function cleanJSON (input) {
   input = input.replace(/,[ \t\r\n]+}/g, '}');
   input = input.replace(/,[ \t\r\n]+\]/g, ']');
   return input;
 }
 
 // Sort the JSON (clean, parse, sort, stringify).
-function sort(inputStr, noarray, space = 4, arbComments) {
+function sort (inputStr, noarray, space = 4, arbComments) {
   var output, obj, r;
 
   if (inputStr) {

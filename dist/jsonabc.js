@@ -20,8 +20,9 @@ function isPlainObject (val) {
 }
 
 // Sorting Logic
-function sortObj (un, noarray) {
+function sortObj (un, noarray, arbComments) {
   noarray = noarray || false;
+  arbComments = arbComments || false;
 
   var or = {};
 
@@ -34,7 +35,7 @@ function sortObj (un, noarray) {
     }
 
     or.forEach(function (v, i) {
-      or[i] = sortObj(v, noarray);
+      or[i] = sortObj(v, noarray, arbComments);
     });
 
     if (!noarray) {
@@ -47,11 +48,15 @@ function sortObj (un, noarray) {
   } else if (isPlainObject(un)) {
     or = {};
     Object.keys(un).sort(function (a, b) {
+      if (arbComments) {
+        if (a.startsWith('@')) a = a.substring(1);
+        if (b.startsWith('@')) b = b.substring(1);
+      }
       if (a.toLowerCase() < b.toLowerCase()) return -1;
       if (a.toLowerCase() > b.toLowerCase()) return 1;
       return 0;
     }).forEach(function (key) {
-      or[key] = sortObj(un[key], noarray);
+      or[key] = sortObj(un[key], noarray, arbComments);
     });
   } else {
     or = un;
@@ -68,15 +73,15 @@ function cleanJSON (input) {
 }
 
 // Sort the JSON (clean, parse, sort, stringify).
-function sort (inputStr, noarray) {
+function sort (inputStr, noarray, space = 4, arbComments) {
   var output, obj, r;
 
   if (inputStr) {
     try {
       inputStr = cleanJSON(inputStr);
       obj = JSON.parse(inputStr);
-      r = sortObj(obj, noarray);
-      output = JSON.stringify(r, null, 4);
+      r = sortObj(obj, noarray, arbComments);
+      output = JSON.stringify(r, null, space);
     } catch (ex) {
       console.error('jsonabc: Incorrect JSON object.', [], ex);
       throw ex;

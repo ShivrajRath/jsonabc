@@ -66,6 +66,14 @@ function sortObj (un, noarray, arbComments) {
 
 // Remove trailing commas
 function cleanJSON (input) {
+  if (typeof input === 'string') {
+    try {
+      JSON.parse(input);
+      return input;
+    } catch (ex) {
+      // Preserve the existing cleanup fallback for non-standard JSON.
+    }
+  }
   input = input.replace(/,[ \t\r\n]+}/g, '}');
   input = input.replace(/,[ \t\r\n]+\]/g, ']');
   return input;

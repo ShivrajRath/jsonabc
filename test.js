@@ -175,3 +175,38 @@ describe('Sorting', function () {
     );
   });
 });
+
+describe('Valid JSON fidelity', function () {
+  it('should preserve delimiter-like JSON key/value text', function () {
+    const input = '{"key, }":"value, ]"}';
+    expect(jsonabc.cleanJSON(input)).to.equal(input);
+    expect(JSON.parse(jsonabc.cleanJSON(input))).to.deep.equal({
+      'key, }': 'value, ]'
+    });
+  });
+  it('should preserve escaped-quote text in nested array sorting', function () {
+    const value = { z: [{ inner: 'quoted ", } text, ]' }], a: 'top, ]' };
+    const input = JSON.stringify(value);
+    const expected = JSON.stringify({
+      a: 'top, ]',
+      z: [{ inner: 'quoted ", } text, ]' }]
+    }, null, 4);
+    expect(jsonabc.sort(input)).to.equal(expected);
+  });
+  it('should retain trailing-comma cleanup fallback when sorting', function () {
+    expect(jsonabc.sort('{"b":2, "a":1, }')).to.equal(
+      '{\n    "a": 1,\n    "b": 2\n}'
+    );
+  });
+  it('should retain empty-input and error-type behavior', function () {
+    expect(jsonabc.sort('')).to.equal(undefined);
+    const originalError = console.error;
+    console.error = function () {};
+    try {
+      expect(function () { jsonabc.sort('{'); }).to.throw(SyntaxError);
+      expect(function () { jsonabc.sort({}); }).to.throw(TypeError);
+    } finally {
+      console.error = originalError;
+    }
+  });
+});

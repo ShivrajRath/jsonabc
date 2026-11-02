@@ -1,70 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" manifest="manifest.appcache">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="favicon.ico" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="MobileOptimized" content="width">
-    <meta name="description" content="Sorts JSON object alphabetically. It supports nested objects, arrays and collections. Works offline and beautifies JSON object too.">
-    <meta name="HandheldFriendly" content="true">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="keywords" content="sort, json, alphabetically, sort json, sort json alphabetically, sort object alphabetically, JSON, lint">
-    <meta name="theme-color" content="#e6a117">
-    <meta name="msapplication-navbutton-color" content="#e6a117">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#e6a117">
-    <title>JSON ABC - Sort JSON Alphabetically</title>
-    <link href="style/app.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sorts JSON object alphabetically. Supports nested objects, arrays and collections. Works offline and beautifies JSON too." />
+  <meta name="theme-color" content="#4f46e5" />
+  <title>JSON ABC — Sort JSON Alphabetically</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="style/app.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="h">
-        <span>
-            <h2>JSON ABC</h2>
-            <h4>
-                <em>Sorts JSON alphabetically</em>
-            </h4>
-        </span>
-
-        <div class="ad">
-            <style> </style>
-            <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
-            <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/rath">
-                <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">
-                <span style="margin-left:5px">Buy me a coffee</span>
-            </a>
-        </div>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">{ }</span>
+      <div>
+        <h1>JSON ABC</h1>
+        <p class="tagline">Sort JSON alphabetically, beautifully.</p>
+      </div>
     </div>
+    <nav class="nav">
+      <a href="https://github.com/ShivrajRath/jsonabc" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://novicelab.org/jsonsortdiff" target="_blank" rel="noopener">JSON abc &amp; diff</a>
+    </nav>
+  </header>
 
-    <form onsubmit="appSort(event, 't')">
-
-        <div class="o mb10">
-            <span>Options: &nbsp;&nbsp;</span>
-            <input type="checkbox" id="noarray" name="noarray" value="true">
-            <label for="noarray">Spare plain Arrays</label>
-            &nbsp;&nbsp;<input type="checkbox" id="useTabs" name="useTabs" value="true">
-            <label for="useTabs">Use Tabs for indentation</label>
-            &nbsp;&nbsp;<input type="checkbox" id="arbComments" name="arbComments" value="true">
-            <label for="arbComments">Sort ARB file - Keep @comments ordered</label>            
+  <main class="main">
+    <section class="card">
+      <div class="toolbar">
+        <div class="options" role="group" aria-label="Options">
+          <label class="chip">
+            <input type="checkbox" id="noarray" />
+            <span>Spare plain arrays</span>
+          </label>
+          <label class="chip">
+            <input type="checkbox" id="useTabs" />
+            <span>Use tabs</span>
+          </label>
+          <label class="chip">
+            <input type="checkbox" id="arbComments" />
+            <span>Sort ARB, keep @comments</span>
+          </label>
         </div>
-        <div class="m">
-            <textarea id="t" class="t" name="jsonabc" placeholder="Paste your unsorted JSON here"
-                aria-label="Paste your unsorted JSON here" spellcheck="false" required aria-required="true"></textarea>
-            <input type="submit" class="f" value="SORT ABC" data-Was-onclick="sort()">
-            <p>
-            <h3 class="c">
-                <a href="https://github.com/ShivrajRath/jsonabc" target="_blank">Github</a>&nbsp;&nbsp;&nbsp;
-                <a href="https://novicelab.org/jsonsortdiff" target="_blank">JSON abc and diff</a>&nbsp;&nbsp;&nbsp;
-            </h3>
-            </p>
+        <div class="actions">
+          <button type="button" class="btn ghost" id="clearBtn">Clear</button>
+          <button type="button" class="btn primary" id="sortBtn">Sort</button>
         </div>
+      </div>
 
-    </form>
+      <div class="editors">
+        <div class="panel">
+          <div class="panel-head">
+            <span>Input</span>
+            <span class="status" id="status" aria-live="polite"></span>
+          </div>
+          <textarea id="input" class="code" placeholder="Paste your unsorted JSON here"
+            aria-label="Paste your unsorted JSON here" spellcheck="false" required></textarea>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <span>Output</span>
+            <button type="button" class="btn small ghost" id="copyBtn">Copy</button>
+          </div>
+          <textarea id="output" class="code" placeholder="Sorted JSON appears here" aria-label="Sorted JSON output"
+            spellcheck="false" readonly></textarea>
+        </div>
+      </div>
+    </section>
 
-    <script src="dist/jsonabc.js"></script>
+    <section class="meta">
+      <p>Beautifies JSON · sorts objects, arrays &amp; collections · works offline · runs in your browser.</p>
+    </section>
+  </main>
 
-    <script src="src/app.js"></script>
+  <footer class="footer">
+    <a class="bmc" target="_blank" rel="noopener" href="https://www.buymeacoffee.com/rath">
+      <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="" />
+      <span>Buy me a coffee</span>
+    </a>
+    <span class="copy">© JSON ABC · MIT License</span>
+  </footer>
+
+  <script src="index.js"></script>
+  <script src="src/app.js"></script>
 </body>
 
 </html>

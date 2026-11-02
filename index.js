@@ -2,12 +2,6 @@
   JSON ABC | License: MIT.
 */
 
-module.exports = {
-  sort: sort,
-  sortObj: sortObj,
-  cleanJSON: cleanJSON
-};
-
 // Is a value an array?
 function isArray (val) {
   return Object.prototype.toString.call(val) === '[object Array]';
@@ -98,3 +92,19 @@ function sort (inputStr, noarray, space = 4, arbComments) {
 }
 
 // End.
+
+// UMD / CommonJS / browser global export
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    sort: sort,
+    sortObj: sortObj,
+    cleanJSON: cleanJSON
+  };
+}
+if (typeof window !== 'undefined') {
+  window.jsonabc = {
+    sort: sort,
+    sortObj: sortObj,
+    cleanJSON: cleanJSON
+  };
+}

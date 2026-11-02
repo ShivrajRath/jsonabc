@@ -1,8 +1,0 @@
-CACHE MANIFEST
-# 2024-05-03:v2.3.4
-
-/favicon.ico
-index.html
-dist/jsonabc.js
-src/app.js
-style/app.css
